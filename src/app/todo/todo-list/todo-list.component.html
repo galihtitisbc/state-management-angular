@@ -1,0 +1,40 @@
+<todo-form></todo-form>
+<div class="text-center mt-5">
+  <div
+    *ngIf="isLoading$ | async; else showTodo"
+    class="spinner-border text-primary"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<ng-template #showTodo>
+  <div class="card col-8 mx-auto mt-5 bg-info-subtle border-0">
+    <div class="card-body">
+      <div
+        class="row d-flex justify-content-between my-2"
+        *ngFor="let todo of todos$ | async"
+      >
+        <div class="col-6 text-center bg-success rounded-2">
+          <div class="py-2 text-white">{{ todo.name }}</div>
+        </div>
+        <div class="col-3 text-center bg-success rounded-2">
+          <div class="py-2 text-white">{{ todo.date }}</div>
+        </div>
+        <div class="col-2 d-flex justify-content-center">
+          <div class="form-check">
+            <input
+              [checked]="todo.isComplete"
+              class="form-check-input"
+              type="checkbox"
+              (change)="statusChanged($event)"
+            />
+          </div>
+          <div class="form-check">
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
