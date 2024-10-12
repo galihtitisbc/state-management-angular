@@ -21,5 +21,23 @@ export const todoReducer = createReducer(
     ...state,
     isLoading: false,
     todos: action.error,
+  })),
+  on(todoActions.addTodo, (state, action) => ({
+    ...state,
+    isLoading: true,
+    todos: [...state.todos, action.todo],
+  })),
+  on(todoActions.addTodoSuccess, (state) => ({
+    ...state,
+    isLoading: false,
+  })),
+  on(todoActions.addTodoFail, (state, action) => ({
+    ...state,
+    isLoading: false,
+    error: action.error,
+  })),
+  on(todoActions.remove, (state, action) => ({
+    ...state,
+    todos: [...state.todos.filter((todo) => todo.id !== action.idTodo)],
   }))
 );

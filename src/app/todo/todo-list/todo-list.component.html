@@ -31,7 +31,9 @@
             />
           </div>
           <div class="form-check">
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger" (click)="deleteTodo(todo.id)">
+              Delete
+            </button>
           </div>
         </div>
       </div>

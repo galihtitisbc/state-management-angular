@@ -32,4 +32,9 @@ export class TodoListComponent implements OnInit {
     let value = (event.target as HTMLInputElement).checked;
     console.log(value);
   }
+
+  deleteTodo(idTodo: string) {
+    console.log(idTodo);
+    this.store.dispatch(todoActions.remove({ idTodo }));
+  }
 }

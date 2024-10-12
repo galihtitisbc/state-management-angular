@@ -31,4 +31,7 @@ export class TodoService {
   getAllTodos(): Observable<Todo[]> {
     return of(this.todos).pipe(delay(2000));
   }
+  addTodo(todo: Todo): Observable<Todo> {
+    return of(todo).pipe(delay(1000));
+  }
 }
